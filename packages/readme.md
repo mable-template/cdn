@@ -1,6 +1,6 @@
-# Mable CDN: CSS
+# Mable CDN: Packages
 
-This file is absolutely necessary to use Mable. Add it anywhere in the `<head>` section of all HTML documents.
+These add additional functionality to Mable. To install, add the provided line of code in the `<head>` section of any HTML documents you want to include the package below the main Mable CSS file.
 
 Example:
 
@@ -23,10 +23,11 @@ Example:
 </head>
 ```
 
-## Latest CSS File
+## Font Awesome
 
-This file may contain bugs, it is recommended to use the "Release" CSS file, or a specific release (not available during beta)
+Adds [Font Awesome](https://fontawesome.com/) features.
 
+```html
+<link rel="stylesheet" type="text/css"  href="https://cdn.mablesite.com/packages/font-awesome.css">
 ```
-<link rel="stylesheet" type="text/css"  href="https://cdn.mablesite.com/css/latest/style.css">
-```
+
