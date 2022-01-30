@@ -1,25 +1,27 @@
 # Mable CDN: Packages
 
-These add additional functionality to Mable. To install, add the provided line of code in the `<head>` section of any HTML documents you want to include the package below the main Mable CSS file.
+These add additional functionality to Mable. To install, add the provided line of code in the `<head>` section below the main Mable CSS file.
 
 Example:
 
 ```html
 <head>
-    <!-- Page Info -->
-    <title>This is a sample Mable HTML Header</title>
+	<!-- Page Info -->
+	<title>This is a sample Mable HTML Header</title>
+	<meta name="description" content="Page Description">
+	<meta name="keywords" content="Page, Tags">
+	<meta property="og:image" content="https://full-url">
+	<link href="../images/brand/favicon.png" rel="shortcut icon">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS Sheets -->
-    <link href="css/style.css" type="text/css" rel="stylesheet">
-
-    <!-- Packages -->
-    <link href="packages/sample-package.css" type="text/css" rel="stylesheet">
+	<!-- CSS Sheets -->
+	<link type="text/css" rel="stylesheet" href="css/style.css">
 		
-    <!-- Themes -->
-    <link rel="stylesheet" type="text/css" href="themes/sample-theme" id="custom-theme-sheet">
+	<!-- Themes -->
+	<link type="text/css" rel="stylesheet" href="themes/sample-theme" id="custom-theme-sheet">
 
-    <!-- Other Things -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Packages -->
+	<link type="text/css" rel="stylesheet" href="packages/sample-package.css">
 </head>
 ```
 
@@ -28,6 +30,6 @@ Example:
 Adds [Font Awesome](https://fontawesome.com/) features.
 
 ```html
-<link rel="stylesheet" type="text/css"  href="https://cdn.mablesite.com/packages/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/packages/font-awesome.css">
 ```
 
