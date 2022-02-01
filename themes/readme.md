@@ -6,7 +6,6 @@ Example:
 
 ```html
 <head>
-<head>
 	<!-- Page Info -->
 	<title>This is a sample Mable HTML Header</title>
 	<meta name="description" content="Page Description">
@@ -24,29 +23,35 @@ Example:
 	<!-- Packages -->
 	<link type="text/css" rel="stylesheet" href="packages/sample-package.css">
 </head>
-</head>
+```
+
+## Autumn
+
+```html
+<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/themes/autumn.css" id="custom-theme-sheet">
 ```
 
 ## BenjiStokman
-
-![benjistokman](images/benjistokman.png)
 
 ```html
 <link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/themes/benjistokman.css" id="custom-theme-sheet">
 ```
 
-## Lines
-
-![lines](images/lines.png)
+## Brandon
 
 ```html
-<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/themes/lines.css" id="custom-theme-sheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/themes/brandon.css" id="custom-theme-sheet">
 ```
 
-## Zen Tokyo Zoo
-
-![zen-tokyo-zoo](images/zen-tokyo-zoo.png)
+## OpenDyslexic
 
 ```html
-<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/themes/zen-tokyo-zoo.css" id="custom-theme-sheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/themes/opendyslexic.css" id="custom-theme-sheet">
 ```
+
+## Wireframe
+
+```html
+<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/themes/wireframe.css" id="custom-theme-sheet">
+```
+
