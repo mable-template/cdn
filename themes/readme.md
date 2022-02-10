@@ -33,6 +33,8 @@ Example:
 
 ## BenjiStokman
 
+![benjistokman-cover](benjistokman-cover.svg)
+
 ```html
 <link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/themes/benjistokman.css" id="custom-theme-sheet">
 ```
@@ -51,7 +53,8 @@ Example:
 
 ## Wireframe
 
+![wireframe-cover](wireframe-cover.svg)
+
 ```html
 <link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/themes/wireframe.css" id="custom-theme-sheet">
 ```
-

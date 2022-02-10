@@ -1,7 +1,7 @@
 /* Wireframe CSS Theme for Mable Template */
 
 @import url('wireframe/wire-one.css');
-@import url('benjistokman/share-tech-mono.css');
+@import url('wireframe/share-tech.css');
 
  :root {
 	--theme-color: #308878;
@@ -12,6 +12,7 @@
 	--title-font: "Wire One", sans-serif;
 	--title-weight: 600;
 	--title-size: 64px;
+	--monospace-font: "Share Tech", monospace;
 	
 	--body-weight: 400;
 	--bold-weight: 600;

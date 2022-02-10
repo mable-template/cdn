@@ -1,15 +1,18 @@
-/* Benjistokman CSS Theme for Mable Template */
+/*
+Benjistokman Mable theme 
+Author: Ben Stokman <ben.stokman@protonmail.com>
+Version 1.1
+*/
 
 @import url('benjistokman/crimson-pro.css');
 @import url('benjistokman/odibee-sans.css');
 @import url('benjistokman/share-tech-mono.css');
 
- :root {
+:root {
 	--theme-color: #fc4651;
 	--title-font: "Odibee Sans", sans-serif;
 	--title-weight: 700;
 	--title-size: 64px;
-	--body-font: "Montserrat", "Noto Sans", sans-serif;
 	--reading-font: "Crimson Pro", serif;
 	--reading-size: 24px;
 	--monospace-font: "Share Tech Mono", monospace;
@@ -70,7 +73,7 @@ button, a.button, input[type=submit] {
 }
 
 .benjistokman-background-two {
-	background-image:url('benjistokman/dots.svg');
+	background-image:url('benjistokman/squares.svg');
 }
 
 .benjistokman-background-three {
@@ -81,13 +84,16 @@ button, a.button, input[type=submit] {
 	background-image:url('benjistokman/grid.svg');
 }
 
+.benjistokman-background-four {
+	background-image:url('benjistokman/dots.svg');
+}
 
 .benjistokman-background-one.section-dark {
 	background-image:url('benjistokman/stripes-diagonal-dark.svg');
 }
 
 .benjistokman-background-two.section-dark {
-	background-image:url('benjistokman/dots-dark.svg');
+	background-image:url('benjistokman/squares-dark.svg');
 }
 
 .benjistokman-background-three.section-dark {
@@ -98,12 +104,16 @@ button, a.button, input[type=submit] {
 	background-image:url('benjistokman/grid-dark.svg');
 }
 
+.benjistokman-background-five.section-dark {
+	background-image:url('benjistokman/dots-dark.svg');
+}
+
 .benjistokman-background-one.section-theme {
 	background-image:url('benjistokman/stripes-diagonal-theme.svg');
 }
 
 .benjistokman-background-two.section-theme {
-	background-image:url('benjistokman/dots-theme.svg');
+	background-image:url('benjistokman/squares-theme.svg');
 }
 
 .benjistokman-background-three.section-theme {
@@ -112,6 +122,10 @@ button, a.button, input[type=submit] {
 
 .benjistokman-background-four.section-theme {
 	background-image:url('benjistokman/grid-theme.svg');
+}
+
+.benjistokman-background-five.section-theme {
+	background-image:url('benjistokman/dots-theme.svg');
 }
 
 @media (prefers-color-scheme: light) {
@@ -126,7 +140,7 @@ button, a.button, input[type=submit] {
 	}
 	
 	.benjistokman-background-two.dark-enabled {
-		background-image:url('benjistokman/dots-darkish.svg');
+		background-image:url('benjistokman/squares-darkish.svg');
 	}
 	
 	.benjistokman-background-three.dark-enabled {
@@ -137,12 +151,16 @@ button, a.button, input[type=submit] {
 		background-image:url('benjistokman/grid-darkish.svg');
 	}
 	
+	.benjistokman-background-five.dark-enabled {
+		background-image:url('benjistokman/dots-darkish.svg');
+	}
+	
 	.benjistokman-background-one.full-dark-enabled {
 		background-image:url('benjistokman/stripes-diagonal-dark.svg');
 	}
 	
 	.benjistokman-background-two.full-dark-enabled {
-		background-image:url('benjistokman/dots-dark.svg');
+		background-image:url('benjistokman/squares-dark.svg');
 	}
 	
 	.benjistokman-background-three.full-dark-enabled {
@@ -151,5 +169,9 @@ button, a.button, input[type=submit] {
 	
 	.benjistokman-background-four.full-dark-enabled {
 		background-image:url('benjistokman/grid-dark.svg');
+	}
+	
+	.benjistokman-background-five.full-dark-enabled {
+		background-image:url('benjistokman/dots-dark.svg');
 	}
 }
