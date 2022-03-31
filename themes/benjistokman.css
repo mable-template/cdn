@@ -17,6 +17,11 @@ Version 1.1
 	--reading-size: 24px;
 	--monospace-font: "Share Tech Mono", monospace;
 	
+	--match-with-light: var(--theme-color);
+	--match-with-dark: var(--theme-color);
+	--highlight-match-with-light: var(--theme-color);
+	--highlight-match-with-dark: var(--theme-color);
+	
 	--border-width-raw: 3px;
 }
 
@@ -84,7 +89,7 @@ button, a.button, input[type=submit] {
 	background-image:url('benjistokman/grid.svg');
 }
 
-.benjistokman-background-four {
+.benjistokman-background-five {
 	background-image:url('benjistokman/dots.svg');
 }
 
