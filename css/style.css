@@ -9,10 +9,10 @@ MIT License
 Table of Contents
 =================================================
 
-0: Root Variables & Reset
+0: Variables & Reset
 	0.1: Font Import
 	0.2: Reset
-	0.3: Root Variables
+	0.3: Variables
 1: Layout
 	1.1: Sections & Containers
 		1.1.1: Small Screens
@@ -50,6 +50,7 @@ Table of Contents
 @import url("../fonts/noto-sans-mono.css");
 
 /* 0.2: Reset */
+
 html, body, div, span, applet, object, iframe, figure, figcaption, footer, header, section, audio, video {
 	margin: 0;
 	padding: 0;
@@ -61,32 +62,33 @@ html, body, div, span, applet, object, iframe, figure, figcaption, footer, heade
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1.25;
 }
+
 blockquote, q {
 	quotes: none;
 }
+
 blockquote:before, blockquote:after, q:before, q:after {
 	content: '';
 	content: none;
 }
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
 
+/* Transision durations on everything */
 * {
 	transition-duration: 0.25s;
 	transition: 0.25s;
 	scroll-behavior: smooth;
 }
 
+/* Making images bind to containers like text */
 img {
 	max-width: 100%;
 }
 
-/* 0.3: Root Variables */
+/* 0.3: Variables */
 
 :root {
 	/* Color */
@@ -122,16 +124,25 @@ img {
 	--body-font: "Montserrat", "Noto Sans", sans-serif;
 	--body-size: 20px;
 	--body-weight: 400;
+	
 	--bold-weight: 700;
 	
 	--reading-font: "Noto Serif", serif;
+	--reading-size: var(--body-size);
 	--reading-weight: 400;
+	
 	--monospace-font: "Noto Sans Mono", monospace;
 	--monospace-weight: 400;
+	
 	--ui-font: var(--body-font); /* Used for buttons and headers and such */
 	--ui-weight: var(--bold-weight); /* Used for buttons and headers and such */
 	
 	--text-align: left;
+	
+	/* Backend text variables */
+	--font-size-raw: var(--body-size);
+	--font-family: var(--body-font);
+	--font-weight: var(--body-weight);
 	
 	/* Sizing and Spacing */
 	
@@ -140,9 +151,10 @@ img {
 	--border-radius-raw: 6px;
 	--border-radius: calc(var(--border-radius-raw) * var(--body-scale));
 	
+	/* Backend sizing variables */
 	--body-scale: 1; /* Used for sizing different text selectors. */
 	--title-scale: 1; /* Used for sizing different title selectors. */
-	--item-scale: 1; /* Used for different element sizes */
+	--item-scale: 1; /* Used for different element sizes, such as making image captions smaller than normal text. */
 	--child-scale: 1; /* Used for different child element sizes */
 	--style-scale: 1; /* Used for .huge, .large, and .small classes */
 	--section-padding-scale: 1; /* Used for section padding on different screen sizes */
@@ -187,7 +199,6 @@ section, .section-regular {
 .section-full > * {
 	margin: auto;
 }
-
 .section-full .bottom {
 	position: absolute;
 	bottom: calc(var(--spacing-size) * 2);
@@ -201,23 +212,14 @@ section, .section-regular {
 	margin: calc(var(--spacing-size) * 2) auto;
 }
 
-.container-full {
-	width: default;
-	margin: 0px;
+.container {
+	max-width: 800px;
 }
-
-@media (min-width: 824px)  {
-	.container {
-		max-width: 800px;
-		margin-left: auto;
-	}
+.container-large {
+	max-width: 1200px;
 }
-
-@media (min-width: 1224px) {
-	.container-large {
-		max-width: 1200px;
-		margin-left: auto
-	}
+.container-fluid {
+	max-width: 100vw;
 }
 
 .row {
@@ -271,9 +273,8 @@ section, .section-regular {
 		width: 100%;
 	}
 
-	.container-full-md {
-		width: 100%;
-		margin: 0px;
+	.container-fluid-md {
+		max-width: 100vw;
 	}
 }
 
@@ -312,9 +313,8 @@ section, .section-regular {
 		width: 100%;
 	}
 
-	.container-full-sm {
-		width: 100%;
-		margin: 0px;
+	.container-fluid-sm {
+		max-width: 100vw;
 	}
 }
 
@@ -353,9 +353,8 @@ section, .section-regular {
 		width: 100%;
 	}
 
-	.container-full-xs {
-		width: 100%;
-		margin: 0px;
+	.container-fluid-xs {
+		max-width: 100vw;
 	}
 }
 
@@ -394,9 +393,8 @@ section, .section-regular {
 		width: 100%;
 	}
 
-	.container-full-lg {
-		width: 100%;
-		margin: 0px;
+	.container-fluid-lg {
+		max-width: 100vw;
 	}
 }
 
@@ -435,9 +433,8 @@ section, .section-regular {
 		width: 100%;
 	}
 
-	.container-full-xl {
-		width: 100%;
-		margin: 0px;
+	.container-fluid-xl {
+		max-width: 100vw;
 	}
 }
 
@@ -464,7 +461,7 @@ section, .section-regular {
 }
 
 .grid.portfolio > * > a {
-	text-decoration: none
+	--text-decoration: none
 }
 
 .grid.automatic-collumns > * {
@@ -1068,26 +1065,56 @@ section, .section-regular {
 	2: Fonts & Text
 	============================================== */
 
-:root {
-	--text-align: left;
-	--font-family: var(--body-font);
-	--font-weight: var(--body-weight);
+body {
+	overflow-wrap: break-word;
 }
 
 * {
 	--font-size: calc(
-		var(--body-size) *
+		var(--font-size-raw) *
 		var(--body-scale) *
 		var(--item-scale) *
 		var(--child-scale) *
 		var(--style-scale) *
 		var(--section-scale)
 	);
+	
 	text-align: var(--text-align);
 	font-family: var(--font-family);
 	font-weight: var(--font-weight);
 	font-size: var(--font-size);
+	text-transform: var(--text-transform);
+	text-decoration: var(--text-decoration);
 	overflow-wrap: break-word;
+	overflow-wrap: inherit;
+}
+
+a {
+	--text-decoration: underline;
+}
+
+b, .bold {
+	--font-weight: var(--bold-weight);
+}
+
+.tiny {
+	--style-scale: 2/4;
+}
+
+.small {
+	--style-scale: 3/4;
+}
+
+.regular {
+	--style-scale: 1;
+}
+
+.large {
+	--style-scale: 5/4;
+}
+
+.huge {
+	--style-scale: 6/4;
 }
 
 /* 2.1: Alignment */
@@ -1107,11 +1134,6 @@ section, .section-regular {
 .text-justified, .text-justified * {
 	--text-align: justify;
 }
-
-b, .bold {
-	--font-weight: var(--bold-weight);
-}
-
 @media (max-width: 992px) {
 	.md-text-left, .md-text-left * {
 		--text-align: left;
@@ -1187,42 +1209,19 @@ b, .bold {
 	}
 }
 
-.tiny {
-	--style-scale: 2/4
-}
-
-.small {
-	--style-scale: 3/4
-}
-
-.large {
-	--style-scale: 5/4
-}
-
-.huge {
-	--style-scale: 6/4
-}
-
 /* 2.2: Headings */
 
-h1, h1 *, h2, h2 *, h3, h3 *, h4, h4 *, h5, h5 *, h6, h6 *, .tagline, .tagline * {
-	--font-size: calc(
-		var(--title-size) *
-		var(--body-scale) *
-		var(--item-scale) *
-		var(--child-scale) *
-		var(--style-scale) *
-		var(--section-scale)
-	);
+h1, h2, h3, h4, h5, h6 {
+	--font-size-raw: var(--title-size);
 	--font-family: var(--title-font);
 	--font-weight: var(--title-weight);
 	line-height: 1.15;
-	margin-bottom: 0;
 }
 
 .tagline {
 	--font-family: var(--body-font);
 	--font-weight: var(--body-weight);
+	line-height: 1.15;
 }
 
 h1 {--item-scale: 9/9}
@@ -1230,8 +1229,7 @@ h2 {--item-scale: 8/9}
 h3 {--item-scale: 7/9}
 h4 {--item-scale: 6/9}
 h5 {--item-scale: 5/9}
-h6 {--item-scale: 4/9}
-.tagline {--item-scale: 4/9}
+h6, .tagline {--item-scale: 4/9}
 
 /* 2.2: Body Fonts */
 
@@ -1240,7 +1238,7 @@ a:hover {
 }
 
 abbr {
-	text-decoration: underline;
+	--text-decoration: underline;
 }
 
 b, strong {
@@ -1251,15 +1249,15 @@ badge {
 	--font-family: var(--ui-font);
 	--font-weight: var(--ui-weight);
 	padding: calc(var(--spacing-size) / 4) calc(var(--spacing-size) / 3);
-	vertical-align: middle;
-	--child-scale: 1/2;
+	vertical-align: top;
+	--child-scale: 1/3;
 	
 	color: var(--element-background-color);
 	background-color: var(--body-color);
 	border: var(--border-width) solid var(--body-color);
 	text-transform: uppercase;
 	text-align: center;
-	text-decoration: none;
+	--text-decoration: none;
 }
 
 badge.hollow {
@@ -1282,7 +1280,6 @@ blockquote {
 	margin: var(--spacing-size);
 }
 
-
 .breadcrumbs {
 	--font-family: var(--monospace-font);
 	--font-weight: var(--monospace-weight);
@@ -1293,17 +1290,18 @@ blockquote {
 	--font-weight: var(--title-weight);
 	--font-size: var(--title-size);
 	--item-scale: 3.5;
-	line-height: calc(var(--body-size) * var(--body-scale) * 3 * var(--style-scale));
 	float: left;
-	padding-top: var(--spacing-size);
-	margin-right: calc(var(--body-size) * var(--body-scale) * 2/3 * var(--style-scale));
-	padding-left: calc(var(--body-size) * var(--body-scale) * 1/3 * var(--style-scale));
+	margin-right: calc(var(--body-size) * 2/3);
+	padding-left: calc(var(--body-size) * 1/3);
 }
 
 hr {
-	max-width: 100%;
-	border-top: var(--border-width) solid var(--accent-color);
+	width: 25%;
+	min-width: 50px;
+	margin: calc(var(--spacing-size) * 2) auto !important;
+	border: calc(var(--border-width) * 1/2) solid var(--accent-color);
 }
+
 mark, .highlight {
 	background-color: var(--highlight-color);
 }
@@ -1430,13 +1428,8 @@ body {
 	--complementary-shade: var(--middle-color-7);
 }
 
-.section-transparent {
+.transparent-background {
 	background-color: transparent;
-	--element-background-color: var(--white-color);
-	--body-color: var(--black-color);
-	--highlight-color: var(--highlight-match-with-light);
-	--accent-color: var(--match-with-light);
-	--complementary-shade: var(--middle-color-7);
 }
 
 html:is([data-scroll='0']) .top-section-black {
@@ -1493,13 +1486,8 @@ html:is([data-scroll='0']) .top-section-theme-inverted {
 	--complementary-shade: var(--middle-color-7);
 }
 
-html:is([data-scroll='0']) .top-section-transparent {
+html:is([data-scroll='0']) .top-transparent-background {
 	background-color: transparent;
-	--element-background-color: var(--white-color);
-	--body-color: var(--black-color);
-	--highlight-color: var(--theme-color);
-	--accent-color: var(--theme-color);
-	--complementary-shade: var(--middle-color-7);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1642,13 +1630,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	.section-transparent-md {
+	.transparent-background-md {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--highlight-match-with-light);
-		--accent-color: var(--match-with-light);
-		--complementary-shade: var(--middle-color-7);
 	}
 
 	html:is([data-scroll='0']) .top-section-black-md {
@@ -1705,13 +1688,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	html:is([data-scroll='0']) .top-section-transparent-md {
+	html:is([data-scroll='0']) .top-transparent-background-md {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--theme-color);
-		--accent-color: var(--theme-color);
-		--complementary-shade: var(--middle-color-7);
 	}
 	
 	@media (prefers-color-scheme: dark) {
@@ -1853,13 +1831,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	.section-transparent-sm {
+	.transparent-background-sm {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--highlight-match-with-light);
-		--accent-color: var(--match-with-light);
-		--complementary-shade: var(--middle-color-7);
 	}
 
 	html:is([data-scroll='0']) .top-section-black-sm {
@@ -1916,13 +1889,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	html:is([data-scroll='0']) .top-section-transparent-sm {
+	html:is([data-scroll='0']) .top-transparent-background-sm {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--theme-color);
-		--accent-color: var(--theme-color);
-		--complementary-shade: var(--middle-color-7);
 	}
 	
 	@media (prefers-color-scheme: dark) {
@@ -2064,13 +2032,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	.section-transparent-xs {
+	.transparent-background-xs {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--highlight-match-with-light);
-		--accent-color: var(--match-with-light);
-		--complementary-shade: var(--middle-color-7);
 	}
 
 	html:is([data-scroll='0']) .top-section-black-xs {
@@ -2127,13 +2090,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	html:is([data-scroll='0']) .top-section-transparent-xs {
+	html:is([data-scroll='0']) .top-transparent-background-xs {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--theme-color);
-		--accent-color: var(--theme-color);
-		--complementary-shade: var(--middle-color-7);
 	}
 	
 	@media (prefers-color-scheme: dark) {
@@ -2275,13 +2233,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	.section-transparent-lg {
+	.transparent-background-lg {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--highlight-match-with-light);
-		--accent-color: var(--match-with-light);
-		--complementary-shade: var(--middle-color-7);
 	}
 
 	html:is([data-scroll='0']) .top-section-black-lg {
@@ -2338,13 +2291,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	html:is([data-scroll='0']) .top-section-transparent-lg {
+	html:is([data-scroll='0']) .top-transparent-background-lg {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--theme-color);
-		--accent-color: var(--theme-color);
-		--complementary-shade: var(--middle-color-7);
 	}
 	
 	@media (prefers-color-scheme: dark) {
@@ -2486,13 +2434,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	.section-transparent-xl {
+	.transparent-background-xl {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--highlight-match-with-light);
-		--accent-color: var(--match-with-light);
-		--complementary-shade: var(--middle-color-7);
 	}
 
 	html:is([data-scroll='0']) .top-section-black-xl {
@@ -2549,13 +2492,8 @@ html:is([data-scroll='0']) .top-section-transparent {
 		--complementary-shade: var(--middle-color-7);
 	}
 
-	html:is([data-scroll='0']) .top-section-transparent-xl {
+	html:is([data-scroll='0']) .top-transparent-background-xl {
 		background-color: transparent;
-		--element-background-color: var(--white-color);
-		--body-color: var(--black-color);
-		--highlight-color: var(--theme-color);
-		--accent-color: var(--theme-color);
-		--complementary-shade: var(--middle-color-7);
 	}
 	
 	@media (prefers-color-scheme: dark) {
@@ -3230,9 +3168,9 @@ button, a.button, input[type=submit] {
 	background-color: var(--body-color);
 	border: var(--border-width) solid var(--body-color);
 	
-	text-transform: uppercase;
-	text-align: center;
-	text-decoration: none;
+	--text-transform: uppercase;
+	--text-align: center;
+	--text-decoration: none;
 	display: inline-block;
 	cursor: pointer;
 	opacity: 1;
@@ -3282,21 +3220,16 @@ button.pill, a.button.pill, input[type=submit].pill {
 	5: Code
 	============================================== */
 
-code, .code {
+code, .code, .code-font {
 	--font-family: var(--monospace-font);
 	--font-weight: var(--monospace-weight);
 	--item-scale: 0.85;
-	background-color: var(--complementary-shade);
 	padding: 0.5px 2px;
 	border-radius: 1.5px;
 }
 
-.code-font {
-	--font-family: var(--monospace-font);
-	--font-weight: var(--monospace-weight);
-	--item-scale: 0.85;
-	padding: 0.5px 2px;
-	border-radius: 1.5px;
+code, .code {
+	background-color: var(--complementary-shade);
 }
 
 pre {
@@ -3316,10 +3249,10 @@ pre {
 header {
  	--font-family: var(--ui-font);
 	--font-weight: var(--ui-weight);
-	--section-scale: 3/4;
+	--section-scale: 17 / 20;
 	width: 100%;
-	padding-top: calc(var(--spacing-size) * var(--section-scale) * 2);
-	padding-bottom: calc(var(--spacing-size) * var(--section-scale) * 2);
+	padding-top: calc(var(--spacing-size) * 3 / 2);
+	padding-bottom: calc(var(--spacing-size) * 3 / 2);
 }
 
 header [class^="container"] {
@@ -3348,13 +3281,13 @@ header ul {
 }
 
 header ul a, header ul a * {
-	text-decoration: none;
+	--text-decoration: none;
 }
 
-header ul li {
+header li {
 	margin-right: var(--spacing-size);
 	display: inline-block;
-	text-transform: uppercase;
+	--text-transform: uppercase;
 }
 
 li.dropdown:hover {
@@ -3366,62 +3299,26 @@ header ul > li button, header ul > li a.button, header ul > li input[type=submit
 	margin-right: calc(var(--spacing-size) * 0.5);
 }
 
-header ul li ul {
+header ul > li > ul {
 	opacity: 0;
 	visibility: hidden;
 	position: absolute;
-	padding: 0;
 	margin-top: calc(var(--spacing-size) * 1/2);
 	margin-left: calc(var(--spacing-size) * -1/2);
-	background: var(--black-color);
-	color: var(--white-color);
+	background-color: var(--element-background-color);
+	border: var(--border-width) solid var(--body-color);
 	padding: var(--spacing-size);
 }
 
-header ul li:hover > ul,
-header ul li ul:hover {
+header ul > li:hover > ul,
+header ul > li > ul:hover {
 	z-index: 100!important;
 	opacity: 1;
 	visibility: visible;
+}
+
+header ul > li > ul > li {
 	display: block;
-}
-
-header ul li ul li {
-  clear: both;
-  width: 100%;
-}
-
-.vertical-header {
-	padding: var(--spacing-size);
-	--section-scale: 1;
-	border-bottom: 0px solid;
-}
-
-.vertical-header a {
-	position: relative;
-	left: 0;
-	transition: left ease 0.25s;
-}
-
-.vertical-header a:hover {
-	opacity: 0.8;
-	left: 2px;
-}
-
-.vertical-header ul, ul.vertical-header {
-	list-style-type: none;
-}
-
-.vertical-header ul a, ul.vertical-header a, .vertical-header ul a * {
-	text-decoration: none;
-}
-
-.vertical-border-left {
-	border-left: var(--border-width) solid var(--body-color);
-}
-
-.vertical-border-right {
-	border-right: var(--border-width) solid var(--body-color);
 }
 
 /* 6.1: Header Colors */
@@ -3436,7 +3333,7 @@ header.no-border {
 
 /* 6.2: Sticky headers */
 @media screen and (min-width: 40rem) {
-	html:is([data-scroll='0']) header.fixed.top-section-transparent, html:is([data-scroll='0']) header.sticky.top-section-transparent {
+	html:is([data-scroll='0']) header.fixed.top-transparent-background, html:is([data-scroll='0']) header.sticky.top-transparent-background {
 		border-bottom: 0 solid transparent;
 	}
 	
@@ -3505,7 +3402,7 @@ li {
 
 dt {
 	--font-weight: var(--bold-weight);
-	text-decoration: underline;
+	--text-decoration: underline;
 	padding: calc(var(--spacing-size) * 2/3) 0;
 }
 
