@@ -27,7 +27,7 @@ Example:
 
 ## Latest CSS File
 
-This file may contain bugs, it is recommended to use the "Release" CSS file, or a specific release (not available during beta)
+This file **will** be unstable. It is recommended to use one of the stable versions below.
 
 ```html
 <link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/css/style.css">
@@ -35,7 +35,9 @@ This file may contain bugs, it is recommended to use the "Release" CSS file, or 
 
 ## Stable Versions
 
+These include bug fix updates
+
 ```html
-<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/css/1.0.0.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/css/1.0.css">
 ```
 
