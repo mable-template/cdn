@@ -1,6 +1,6 @@
 # Mable CDN: CSS
 
-This file is absolutely necessary to use Mable. Add it anywhere in the `<head>` section of all HTML documents.
+This file is necessary to use Mable. Add it anywhere in the `<head>` section of all HTML documents.
 
 Example:
 
@@ -25,9 +25,11 @@ Example:
 </head>
 ```
 
+Importing a css file from this page will also automatically import necesary fonts.
+
 ## Latest CSS File
 
-This file **will** be unstable. It is recommended to use one of the stable versions below.
+This file **will** be unstable at some point. It is recommended to use one of the stable versions below.
 
 ```html
 <link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/css/style.css">
@@ -35,7 +37,11 @@ This file **will** be unstable. It is recommended to use one of the stable versi
 
 ## Stable Versions
 
-These include bug fix updates
+It is recommended that you use the latest stable version.
+
+```html
+<link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/css/1.1.css">
+```
 
 ```html
 <link rel="stylesheet" type="text/css" href="https://cdn.mablesite.com/css/1.0.css">

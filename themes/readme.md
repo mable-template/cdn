@@ -33,6 +33,8 @@ Example:
 
 ## BenjiStokman
 
+[Repository](https://git.benstokman.me/benjistokman/benjistokman-mable-theme)
+
 ![benjistokman-cover](benjistokman-cover.svg)
 
 ```html
@@ -52,6 +54,8 @@ Example:
 ```
 
 ## Wireframe
+
+[Repository](https://git.benstokman.me/benjistokman/wireframe-mable-theme)
 
 ![wireframe-cover](wireframe-cover.svg)
 
